@@ -11,7 +11,7 @@
                 class="flex items-center justify-center bg-light-50 flex-col rounded-4xl my-10">
             <!--            标题-->
             <div class="font-bold text-5xl text-cyan-600 my-8">
-                LOGIN
+                REGISTER
             </div>
             <!--            分隔线-->
             <div class="flex items-center justify-center my-2 text-gray-600 space-x-2">
@@ -21,12 +21,19 @@
             </div>
             <!--            表单-->
             <div>
-                <el-form :model="form" class="space-y-6 my-8 font-serif" label-position="top">
-                    <el-form-item label="账  户">
-                        <el-input v-model="account.username" placeholder="请输入身份证号/注册邮箱"/>
+                <el-form :model="form" class="my-4 font-serif" label-position="top">
+                    <el-form-item label="邮  箱">
+                        <el-input v-model="account.email" placeholder="请输入邮箱"/>
                     </el-form-item>
                     <el-form-item label="密  码">
-                        <el-input v-model="account.password" placeholder="请输入密码"/>
+                        <el-input type="password" v-model="account.password" placeholder="请输入密码"/>
+                    </el-form-item>
+                    <el-form-item label="重复密码">
+                        <el-input type="password" v-model="account.repassword" placeholder="请再次输入密码"/>
+                    </el-form-item>
+                    <el-form-item label="验证码">
+                        <el-input v-model="account.code" placeholder="请输入验证码" class="w-[200px]"/>
+                        <el-button type="info" @click="sendCode">发送验证码</el-button>
                     </el-form-item>
                     <el-form-item>
                         <el-button round type="primary" @click="onSubmit" class="bg-cyan-600 w-[300px]">登 录
@@ -44,12 +51,17 @@ import {reactive} from 'vue'
 
 // do not use same name with ref
 const account = reactive({
-    username: '',
-    password: ''
+    email: '',
+    password: '',
+    repassword: '',
+    code: ''
 })
 
 const onSubmit = () => {
     console.log('submit!')
+}
+const sendCode = () => {
+    console.log('send code!')
 }
 </script>
 <script>
