@@ -23,20 +23,24 @@
             <div>
                 <el-form :model="form" class="my-4 font-serif" label-position="top">
                     <el-form-item label="邮  箱">
-                        <el-input v-model="account.email" placeholder="请输入邮箱"/>
+                        <el-input v-model="account.email" :prefix-icon="Message" placeholder="请输入邮箱"/>
                     </el-form-item>
                     <el-form-item label="密  码">
-                        <el-input type="password" v-model="account.password" placeholder="请输入密码"/>
+                        <el-input type="password" :prefix-icon="Lock" v-model="account.password"
+                                  placeholder="请输入密码"/>
                     </el-form-item>
                     <el-form-item label="重复密码">
-                        <el-input type="password" v-model="account.repassword" placeholder="请再次输入密码"/>
+                        <el-input type="password" :prefix-icon="Lock" v-model="account.repassword"
+                                  placeholder="请再次输入密码"/>
                     </el-form-item>
                     <el-form-item label="验证码">
-                        <el-input v-model="account.code" placeholder="请输入验证码" class="w-[200px]"/>
-                        <el-button type="info" @click="sendCode">发送验证码</el-button>
+                        <el-input v-model="account.code" :prefix-icon="ChatLineSquare" placeholder="请输入验证码"
+                                  class="w-[200px]"/>
+                        <el-button type="info" @click="sendCode" class="bg-slate-600 text-light-50">发送验证码
+                        </el-button>
                     </el-form-item>
                     <el-form-item>
-                        <el-button round type="primary" @click="onSubmit" class="bg-cyan-600 w-[300px]">登 录
+                        <el-button round type="primary" @click="onSubmit" class="bg-cyan-600 w-[300px]">注 册
                         </el-button>
                     </el-form-item>
                 </el-form>
@@ -48,6 +52,7 @@
 <script setup>
 
 import {reactive} from 'vue'
+import {ChatLineSquare, Lock, Message} from '@element-plus/icons-vue'
 
 // do not use same name with ref
 const account = reactive({
