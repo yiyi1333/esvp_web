@@ -3,12 +3,18 @@ import Index from '~/pages/index.vue'
 import NotFound from '~/pages/404.vue'
 import Login from '~/pages/login.vue'
 import Register from '~/pages/register.vue'
+import verificationcenter from '~/pages/verificationcenter.vue'
 
 const routers = [
     {
         path: '/',
         name: 'Index',
         component: Index
+    },
+    {
+        path: '/verify',
+        name: 'verificationcenter',
+        component: verificationcenter
     },
     {
         path: '/login',
