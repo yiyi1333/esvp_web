@@ -4,12 +4,17 @@ import NotFound from '~/pages/404.vue'
 import Login from '~/pages/login.vue'
 import Register from '~/pages/register.vue'
 import verificationcenter from '~/pages/verificationcenter.vue'
-
+import AppLayout from "@/layout/AppLayout.vue";
 const routers = [
     {
         path: '/',
         name: 'Index',
         component: Index
+    },
+    {
+        path: '/app',
+        name: 'AppLayout',
+        component: AppLayout
     },
     {
         path: '/verify',
