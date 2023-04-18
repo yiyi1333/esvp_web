@@ -11,26 +11,26 @@
             </el-aside>
             <!--            主体-->
             <el-main>
-                <modelpage/>
+                <!--                <modelpage/>-->
                 <router-view/>
             </el-main>
         </el-container>
     </el-container>
 </template>
 
-<script setup>
+<script>
 import navbar from "@/components/navbar/navbar.vue";
 import asidemenu from "@/components/menu/asidemenu.vue";
 import modelpage from "@/components/main/modelpage.vue";
-import Modelpage from "@/components/main/modelpage.vue";
 
-// export default {
-//     name: "AppLayout",
-//     components: {
-//         navbar,
-//         asidemenu
-//     }
-// }
+export default {
+    name: "AppLayout",
+    components: {
+        navbar,
+        asidemenu,
+        modelpage
+    }
+}
 </script>
 
 <style scoped>

@@ -5,6 +5,9 @@ import Login from '~/pages/login.vue'
 import Register from '~/pages/register.vue'
 import verificationcenter from '~/pages/verificationcenter.vue'
 import AppLayout from "@/layout/AppLayout.vue";
+import modelpage from "@/components/main/modelpage.vue";
+import Page1 from "@/components/main/Page1.vue";
+
 const routers = [
     {
         path: '/',
@@ -14,7 +17,20 @@ const routers = [
     {
         path: '/app',
         name: 'AppLayout',
-        component: AppLayout
+        component: AppLayout,
+        redirect: '/demo',
+        children: [
+            {
+                path: '/demo',
+                name: 'Demo',
+                component: modelpage
+            },
+            {
+                path: '/page1',
+                name: 'Page1',
+                component: Page1
+            },
+        ]
     },
     {
         path: '/verify',

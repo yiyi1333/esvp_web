@@ -7,18 +7,20 @@
     >
         <div v-for="item in menu">
             <div v-if="item.children == null">
-                <el-menu-item :index="item.index" class="text-teal-500">
-                    <span>{{ item.title }}</span>
+                <el-menu-item :index="item.index" :key="item.id" class="text-teal-500">
+                    <router-link to="/demo"><span>{{ item.title }}</span></router-link>
+
                 </el-menu-item>
             </div>
             <div v-else>
-                <el-sub-menu :index="item.index">
+                <el-sub-menu :index="item.index" :key="item.id">
                     <template #title>
                         <span>{{ item.title }}</span>
                     </template>
                     <el-menu-item-group>
-                        <el-menu-item v-for="child in item.children" :index="child.index" class="text-teal-500">
-                            {{ child.title }}
+                        <el-menu-item v-for="(child, index) in item.children" :index="child.index" :key="index"
+                                      class="text-teal-500">
+                            <router-link to="/page1">{{ child.title }}</router-link>
                         </el-menu-item>
                     </el-menu-item-group>
                 </el-sub-menu>
@@ -29,7 +31,7 @@
 
 <script>
 import axios from "axios";
-
+import api from "@/api/index";
 
 export default {
     name: "asidemenu",
@@ -37,10 +39,12 @@ export default {
         return {
             menu: [
                 {
+                    id: 1,
                     index: '1',
                     title: 'Demo'
                 },
                 {
+                    id: 2,
                     index: '2',
                     title: 'Answer a question',
                     children: [
@@ -55,6 +59,7 @@ export default {
                     ]
                 },
                 {
+                    id: 3,
                     index: '3',
                     title: 'Annotate a sentence',
                     children: [
@@ -85,6 +90,7 @@ export default {
                     ]
                 },
                 {
+                    id: 4,
                     index: '4',
                     title: 'Annotate a passage',
                     children: [
@@ -95,6 +101,7 @@ export default {
                     ]
                 },
                 {
+                    id: 5,
                     index: '5',
                     title: 'Generate a passage',
                     children: [
@@ -109,6 +116,7 @@ export default {
                     ]
                 },
                 {
+                    id: 6,
                     index: '6',
                     title: 'Compare two sentences',
                     children: [
@@ -126,18 +134,16 @@ export default {
         }
     },
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
-        }
+        /*        handleOpen(key, keyPath) {
+                    console.log(key, keyPath);
+                },
+                handleClose(key, keyPath) {
+                    console.log(key, keyPath);
+                }*/
     },
     created() {
-        axios.get('/api/vgg/demo').then(res => {
-            console.log(res)
-        }).catch(err => {
-            console.log(err)
+        const result = api.demo().then(res => {
+            console.log(res.data)
         })
     }
 }
