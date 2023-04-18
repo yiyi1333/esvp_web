@@ -21,6 +21,17 @@ export default defineConfig({
         // 是否自动在浏览器打开
         open: true,
         // 是否开启 https
-        https: false
+        https: false,
+        // 代理
+        proxy: {
+            // 选项写法
+            '/api': {
+                target: 'http://127.0.0.1:8080/modeldemo',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, '')
+            }
+
+        }
     }
+
 })

@@ -9,7 +9,7 @@
     >
         <el-menu-item :span="4" index="0">LOGO AND TITLE</el-menu-item>
         <div class="flex-grow"/>
-        <el-menu-item index="1">Processing Center</el-menu-item>
+        <el-menu-item index="1">Model Center</el-menu-item>
         <el-sub-menu index="2">
             <template #title>Workspace</template>
             <el-menu-item index="2-1">item one</el-menu-item>
@@ -25,15 +25,15 @@
     </el-menu>
 </template>
 
-<script>
-export default {
-    name: "navbar",
-    methods: {
-        handleSelect(key, keyPath) {
-            console.log(key, keyPath);
-        }
-    }
-}
+<script setup>
+// export default {
+//     name: "navbar",
+//     methods: {
+//         handleSelect(key, keyPath) {
+//             console.log(key, keyPath);
+//         }
+//     }
+// }
 </script>
 
 <style scoped>
