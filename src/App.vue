@@ -8,4 +8,7 @@
 </template>
 
 <style>
+:root {
+    --el-color-primary: #14b8a6;
+}
 </style>

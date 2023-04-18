@@ -18,16 +18,16 @@ const routers = [
         path: '/app',
         name: 'AppLayout',
         component: AppLayout,
-        redirect: '/demo',
+        redirect: '/1',
         children: [
             {
-                path: '/demo',
-                name: 'Demo',
+                path: '/1',
+                name: '1',
                 component: modelpage
             },
             {
-                path: '/page1',
-                name: 'Page1',
+                path: '/2-1',
+                name: '2-1',
                 component: Page1
             },
         ]

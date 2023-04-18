@@ -22,6 +22,7 @@ export default defineConfig({
         open: false,
         // 是否开启 https
         https: false,
+        cors: true,
         // 代理
         proxy: {
             // 选项写法

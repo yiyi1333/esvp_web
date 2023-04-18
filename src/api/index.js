@@ -7,6 +7,13 @@ const api = {
             imageUrl: "demo",
             model: "vgg19"
         })
+    },
+
+    vggdemo(imageUrl, model) {
+        return axios.post('/api/modeldemo/vgg/vggdemo', {
+            imageUrl: imageUrl,
+            model: model
+        })
     }
 }
 

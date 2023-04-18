@@ -1,5 +1,5 @@
 <template>
-    <h1>page1</h1>
+    <h1>开发中，尽情期待...</h1>
 </template>
 
 <script>

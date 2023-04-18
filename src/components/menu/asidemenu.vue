@@ -4,12 +4,12 @@
             background-color="#ffffff"
             default-active="0"
             text-color="#56585d"
+            router="true"
     >
         <div v-for="item in menu">
             <div v-if="item.children == null">
                 <el-menu-item :index="item.index" :key="item.id" class="text-teal-500">
-                    <router-link to="/demo"><span>{{ item.title }}</span></router-link>
-
+                    <span>{{ item.title }}</span>
                 </el-menu-item>
             </div>
             <div v-else>
@@ -20,7 +20,7 @@
                     <el-menu-item-group>
                         <el-menu-item v-for="(child, index) in item.children" :index="child.index" :key="index"
                                       class="text-teal-500">
-                            <router-link to="/page1">{{ child.title }}</router-link>
+                            <span> {{ child.title }} </span>
                         </el-menu-item>
                     </el-menu-item-group>
                 </el-sub-menu>
@@ -41,7 +41,8 @@ export default {
                 {
                     id: 1,
                     index: '1',
-                    title: 'Demo'
+                    title: 'Demo',
+                    path: '/demo'
                 },
                 {
                     id: 2,
@@ -50,11 +51,13 @@ export default {
                     children: [
                         {
                             index: '2-1',
-                            title: 'Reading Comprehension'
+                            title: 'Reading Comprehension',
+                            path: '/page1'
                         },
                         {
                             index: '2-2',
-                            title: 'Visual Question Answering'
+                            title: 'Visual Question Answering',
+                            path: '/page1'
                         }
                     ]
                 },
@@ -65,27 +68,33 @@ export default {
                     children: [
                         {
                             index: '3-1',
-                            title: 'Named Entity Recognition'
+                            title: 'Named Entity Recognition',
+                            path: '/page1'
                         },
                         {
                             index: '3-2',
-                            title: 'Open Information Extraction'
+                            title: 'Open Information Extraction',
+                            path: '/page1'
                         },
                         {
                             index: '3-3',
-                            title: 'Sentiment Analysis'
+                            title: 'Sentiment Analysis',
+                            path: '/page1'
                         },
                         {
                             index: '3-4',
-                            title: 'Dependency Parsing'
+                            title: 'Dependency Parsing',
+                            path: '/page1'
                         },
                         {
                             index: '3-5',
-                            title: 'Constituency Parsing'
+                            title: 'Constituency Parsing',
+                            path: '/page1'
                         },
                         {
                             index: '3-6',
-                            title: 'Semantic Role Labeling'
+                            title: 'Semantic Role Labeling',
+                            path: '/page1'
                         }
                     ]
                 },
@@ -96,7 +105,8 @@ export default {
                     children: [
                         {
                             index: '4-1',
-                            title: 'Coreference Resolution'
+                            title: 'Coreference Resolution',
+                            path: '/page1'
                         }
                     ]
                 },
@@ -107,11 +117,13 @@ export default {
                     children: [
                         {
                             index: '5-1',
-                            title: 'Language Modeling'
+                            title: 'Language Modeling',
+                            path: '/page1'
                         },
                         {
                             index: '5-2',
-                            title: 'Masked Language Modeling'
+                            title: 'Masked Language Modeling',
+                            path: '/page1'
                         }
                     ]
                 },
@@ -122,11 +134,13 @@ export default {
                     children: [
                         {
                             index: '6-1',
-                            title: 'Textual Entailment'
+                            title: 'Textual Entailment',
+                            path: '/page1'
                         },
                         {
                             index: '6-2',
-                            title: 'Evaluate Reading Comprehension'
+                            title: 'Evaluate Reading Comprehension',
+                            path: '/page1'
                         }
                     ]
                 }
