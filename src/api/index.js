@@ -14,6 +14,12 @@ const api = {
             imageUrl: imageUrl,
             model: model
         })
+    },
+
+    nerdemo(text) {
+        return axios.post('/api/modeldemo/vgg/nerdemo', {
+            text: text
+        })
     }
 }
 
