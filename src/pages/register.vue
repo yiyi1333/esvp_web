@@ -49,30 +49,131 @@
     </el-row>
 </template>
 
-<script setup>
+<script>
 
 import {reactive} from 'vue'
 import {ChatLineSquare, Lock, Message} from '@element-plus/icons-vue'
+import api from '@/api'
 
-// do not use same name with ref
-const account = reactive({
-    email: '',
-    password: '',
-    repassword: '',
-    code: ''
-})
-
-const onSubmit = () => {
-    console.log('submit!')
-}
-const sendCode = () => {
-    console.log('send code!')
-}
-</script>
-<script>
 export default {
-    name: "login"
+    name: 'Register',
+    components: {
+        ChatLineSquare,
+        Lock,
+        Message
+    },
+    data() {
+        return {
+            account: {
+                email: '',
+                password: '',
+                repassword: '',
+                code: ''
+            }
+        }
+    },
+    methods: {
+        checkEmail(email) {
+            const reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+            return reg.test(email)
+        },
+        onSubmit() {
+            // 校验邮箱格式
+            if (!this.account.email) {
+                this.$message({
+                    message: '邮箱不能为空',
+                    type: 'error'
+                })
+                return
+            }
+            if (!this.checkEmail(this.account.email)) {
+                this.$message({
+                    message: '邮箱格式不正确',
+                    type: 'error'
+                })
+                return
+            }
+            // 校验密码
+            if (!this.account.password) {
+                this.$message({
+                    message: '密码不能为空',
+                    type: 'error'
+                })
+                return
+            }
+            if (!this.account.repassword) {
+                this.$message({
+                    message: '请再次输入密码',
+                    type: 'error'
+                })
+                return
+            }
+            if (this.account.password.length < 8) {
+                this.$message({
+                    message: '密码长度不能小于8位',
+                    type: 'error'
+                })
+                return
+            }
+            if (this.account.password !== this.account.repassword) {
+                this.$message({
+                    message: '两次密码不一致',
+                    type: 'error'
+                })
+                return
+            }
+            // 发送注册请求
+            api.register(this.account.email, this.account.password, this.account.code).then(res => {
+                console.log(res.data)
+                if (res.data.code == 200) {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'success'
+                    })
+                    this.$router.push('/login')
+                } else {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    })
+                }
+            })
+
+        },
+        sendCode() {
+            //校验邮箱格式
+            if (!this.account.email) {
+                this.$message({
+                    message: '邮箱不能为空',
+                    type: 'error'
+                })
+                return
+            }
+            if (!this.checkEmail(this.account.email)) {
+                this.$message({
+                    message: '邮箱格式不正确',
+                    type: 'error'
+                })
+                return
+            }
+            api.getRegisterVerificationCode(this.account.email).then(res => {
+                console.log(res.data)
+                if (res.data.code == 200) {
+                    this.$message({
+                        message: '验证码发送成功',
+                        type: 'success'
+                    })
+                } else {
+                    this.$message({
+                        message: '验证码发送失败',
+                        type: 'error'
+                    })
+                }
+            })
+        }
+    }
 }
+
 </script>
 
 
