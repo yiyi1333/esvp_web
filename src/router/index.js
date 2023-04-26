@@ -7,6 +7,7 @@ import verificationcenter from '~/pages/verificationcenter.vue'
 import AppLayout from "@/layout/AppLayout.vue";
 import modelpage from "@/components/main/modelpage.vue";
 import Page1 from "@/components/main/Page1.vue";
+import Authentication from "@/pages/authentication.vue";
 
 const routers = [
     {
@@ -46,6 +47,11 @@ const routers = [
         path: '/register',
         name: 'Register',
         component: Register
+    },
+    {
+        path: '/authentication',
+        name: 'Authentication',
+        component: Authentication
     },
     {
         path: '/:pathMatch(.*)*',

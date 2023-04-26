@@ -5,7 +5,7 @@ export default createStore({
         //token
         // token: localStorage.getItem('token') || '',
         //用户信息
-        userInfo: null
+        userInfo: {}
     },
 
     mutations: {

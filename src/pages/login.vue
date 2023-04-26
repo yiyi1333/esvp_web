@@ -60,10 +60,19 @@ export default {
                 console.log(res)
                 if (res.data.code == 200) {
                     // 保存用户信息
+                    // 将res.data.user 保存到vuex中并在控制台打印
                     this.$store.commit('setUserInfo', res.data.user)
+                    console.log(this.$store.state.userInfo)
                     this.$message.success('登录成功')
-                    // 跳转到主页
-                    this.$router.push({path: '/'})
+                    //如果未完善实名信息
+                    if (res.data.user.status == 1) {
+                        this.$router.push({path: '/authentication'})
+                        return
+                    } else if (res.data.user.status == 2) {
+                        // 跳转到主页
+                        this.$router.push({path: '/'})
+                        return;
+                    }
                 } else {
                     this.$message.error(res.data.msg)
                 }

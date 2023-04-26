@@ -20,6 +20,16 @@ const api = {
             password: password,
             verifyCode: verifyCode
         })
+    },
+    authentication(id, realname, idcard, phone, sex, birthday) {
+        return axios.post('/api/esvp/user/authentication', {
+            id: id,
+            realname: realname,
+            idcard: idcard,
+            phone: phone,
+            sex: sex,
+            birthday: birthday
+        })
     }
 
     // 测试接口
