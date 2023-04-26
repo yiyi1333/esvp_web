@@ -3,11 +3,12 @@ import Index from '~/pages/index.vue'
 import NotFound from '~/pages/404.vue'
 import Login from '~/pages/login.vue'
 import Register from '~/pages/register.vue'
-import verificationcenter from '~/pages/verificationcenter.vue'
+import Verificationcenter from '@/pages/verificationcenter.vue'
 import AppLayout from "@/layout/AppLayout.vue";
 import modelpage from "@/components/main/modelpage.vue";
 import Page1 from "@/components/main/Page1.vue";
 import Authentication from "@/pages/authentication.vue";
+import Personcenter from "@/pages/personcenter.vue";
 
 const routers = [
     {
@@ -34,9 +35,14 @@ const routers = [
         ]
     },
     {
-        path: '/verify',
-        name: 'verificationcenter',
-        component: verificationcenter
+        path: '/Verificationcenter',
+        name: 'Verificationcenter',
+        component: Verificationcenter
+    },
+    {
+        path: '/personcenter',
+        name: 'Personcenter',
+        component: Personcenter
     },
     {
         path: '/login',

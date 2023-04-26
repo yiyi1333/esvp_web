@@ -30,7 +30,7 @@ const api = {
             sex: sex,
             birthday: birthday
         })
-    }
+    },
 
     // 测试接口
     /*    demo() {
@@ -39,14 +39,14 @@ const api = {
                 model: "vgg19"
             })
         },
-    
+
         vggdemo(imageUrl, model) {
             return axios.post('/api/modeldemo/vgg/vggdemo', {
                 imageUrl: imageUrl,
                 model: model
             })
         },
-    
+
         nerdemo(text) {
             return axios.post('/api/modeldemo/vgg/nerdemo', {
                 text: text

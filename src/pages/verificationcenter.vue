@@ -1,10 +1,10 @@
 <template>
-
+  验证中心
 </template>
 
 <script>
 export default {
-    name: "verificationcenter"
+    name: "Verificationcenter"
 }
 </script>
 

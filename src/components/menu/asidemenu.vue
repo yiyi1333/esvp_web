@@ -156,9 +156,9 @@ export default {
                 }*/
     },
     created() {
-        const result = api.demo().then(res => {
-            console.log(res.data)
-        })
+        // const result = api.demo().then(res => {
+        //     console.log(res.data)
+        // })
     }
 }
 </script>

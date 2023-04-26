@@ -1,20 +1,24 @@
 <template>
     <el-row class="bg-cyan-600 min-h-screen min-w-screen">
         <el-col :span="12">
-            <el-card shadow="always" class="bg-sky-50 flex items-center justify-center">
-                <img src="../assets/safe.svg" class="image"/>
-                <div style="padding: 14px" class="items-center justify-center">
-                    <span class="font-bold text-xl">验证中心</span>
-                </div>
-            </el-card>
+            <router-link to="verificationcenter">
+                <el-card shadow="always" class="bg-sky-50 flex items-center justify-center">
+                    <img src="../assets/safe.svg" class="image"/>
+                    <div style="padding: 14px" class="items-center justify-center">
+                        <span class="font-bold text-xl">验证中心</span>
+                    </div>
+                </el-card>
+            </router-link>
         </el-col>
         <el-col shadow="always" :span="12" class="items-center justify-center">
-            <el-card shadow="hover" class="bg-sky-50 flex items-center justify-center">
-                <img src="../assets/self.svg" class="image"/>
-                <div style="padding: 14px" class="items-center justify-center">
-                    <span class="font-bold text-xl">个人中心</span>
-                </div>
-            </el-card>
+            <router-link to="/personcenter">
+                <el-card shadow="hover" class="bg-sky-50 flex items-center justify-center">
+                    <img src="../assets/self.svg" class="image"/>
+                    <div style="padding: 14px" class="items-center justify-center">
+                        <span class="font-bold text-xl">个人中心</span>
+                    </div>
+                </el-card>
+            </router-link>
         </el-col>
     </el-row>
 </template>
