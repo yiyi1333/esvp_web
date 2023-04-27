@@ -70,7 +70,7 @@ export default {
                         return
                     } else if (res.data.user.status == 2) {
                         // 跳转到主页
-                        this.$router.push({path: '/'})
+                        this.$router.push({path: '/index'})
                         return;
                     }
                 } else {
@@ -78,6 +78,25 @@ export default {
                 }
             })
         }
+    },
+    created() {
+        // 存储store中的数据
+        // 页面刷新监视器
+        window.addEventListener('beforeunload', () => {
+            console.log('页面刷新')
+            sessionStorage.setItem('store', JSON.stringify(this.$store.state))
+        })
+        if (sessionStorage.getItem('store')) {
+            this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem('store'))))
+        }
+
+        // 从store中读取数据
+        this.account = JSON.parse(JSON.stringify(this.$store.state.userInfo))
+        console.log(this.account.username)
+        // 如果this.account 不空
+        // if (this.account != null && this.account != '') {
+        //     this.$router.push({path: '/index'})
+        // }
     }
 }
 

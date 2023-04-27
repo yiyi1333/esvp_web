@@ -10,12 +10,24 @@ import Page1 from "@/components/main/Page1.vue";
 import Authentication from "@/pages/authentication.vue";
 import Personcenter from "@/pages/personcenter.vue";
 import home from "@/components/main/home.vue";
+import forgedSignature from "@/components/main/forgedSignature.vue";
+import geniuneSignature from "@/components/main/geniuneSignature.vue";
 
 const routers = [
     {
         path: '/',
+        name: 'Login',
+        component: Login
+    },
+    {
+        path: '/index',
         name: 'Index',
         component: Index
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: Register
     },
     // {
     //     path: '/app',
@@ -50,18 +62,18 @@ const routers = [
                 path: '/home',
                 name: 'home',
                 component: home
+            },
+            {
+                path: '/forgedSignature',
+                name: 'forgedSignature',
+                component: forgedSignature
+            },
+            {
+                path: '/geniuneSignature',
+                name: 'geniuneSignature',
+                component: geniuneSignature
             }
         ]
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login
-    },
-    {
-        path: '/register',
-        name: 'Register',
-        component: Register
     },
     {
         path: '/authentication',

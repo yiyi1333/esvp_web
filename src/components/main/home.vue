@@ -1,9 +1,9 @@
 <template>
-    <el-card class="box-card mg-1 ">
+    <el-card class="box-card mg-1 p-6">
         <!--        头像-->
         <div class="flex flex-row">
             <el-avatar :size="70" :src="account.head"></el-avatar>
-            <p class="ml-4 text-xl align-middle antialiased username">zhengzhanyi@outlook.com</p>
+            <el-text class="ml-4 text-xl align-middle antialiased">{{ account.username }}</el-text>
         </div>
         <!--        个人信息-->
         <div class="flex flex-row">
@@ -80,10 +80,8 @@ export default {
     methods: {
         // 保存按钮
         saveHandle() {
-            console.log('保存按钮' + this.account.phone)
             // 保存到store中
-            const userInfo = JSON.parse(JSON.stringify(this.$store.state.userInfo))
-            this.$store.commit('setUserInfo', userInfo)
+            this.$store.commit('setUserInfo', this.account)
             // 保存到数据库中
             api.saveInfo(this.account).then(res => {
                 console.log(res)
@@ -105,6 +103,11 @@ export default {
             console.log('取消按钮' + this.$store.state.userInfo.phone)
             // 从store中读取数据
             this.account = JSON.parse(JSON.stringify(this.$store.state.userInfo))
+            if (this.account.sex == 1) {
+                this.account.sex = 'true'
+            } else if (this.account.sex == 0) {
+                this.account.sex = 'false'
+            }
         }
     },
     // 页面启动时从store中读取数据
@@ -120,11 +123,11 @@ export default {
         }
 
 
-        console.log('store中的数据:' + this.$store.state.userInfo.phone)
+        // console.log('store中的数据:' + this.$store.state.userInfo.phone)
         this.account = JSON.parse(JSON.stringify(this.$store.state.userInfo))
         if (this.account.sex == 1) {
             this.account.sex = 'true'
-        } else {
+        } else if (this.account.sex == 0) {
             this.account.sex = 'false'
         }
 
@@ -134,7 +137,7 @@ export default {
 
 <style scoped>
 /*让p垂直方向居中*/
-.username {
+.el-text {
     line-height: 60px;
 }
 
