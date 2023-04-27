@@ -31,6 +31,15 @@ const api = {
             birthday: birthday
         })
     },
+    // 保存用户信息
+    saveInfo(account) {
+        return axios.post('/api/esvp/user/saveUserInfo', {
+            id: account.id,
+            phone: account.phone,
+            birthday: account.birthday,
+            sex: account.sex
+        })
+    }
 
     // 测试接口
     /*    demo() {

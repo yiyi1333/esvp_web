@@ -12,7 +12,7 @@
                 >
                     <el-menu-item :span="4" index="0">E S V P</el-menu-item>
                     <div class="flex-grow"/>
-                    <el-menu-item index="1">个人信息</el-menu-item>
+                    <el-menu-item index="/home">个人信息</el-menu-item>
                     <!--                <el-sub-menu index="2">-->
                     <!--                    <template #title>Workspace</template>-->
                     <!--                    <el-menu-item index="2-1">item one</el-menu-item>-->
@@ -116,6 +116,17 @@ export default {
                     path: '/manualVerification'
                 }
             ]
+        }
+    },
+    created() {
+        // 存储store中的数据
+        // 页面刷新监视器
+        window.addEventListener('beforeunload', () => {
+            console.log('页面刷新')
+            sessionStorage.setItem('store', JSON.stringify(this.$store.state))
+        })
+        if (sessionStorage.getItem('store')) {
+            this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem('store'))))
         }
     }
 }

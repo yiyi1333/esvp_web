@@ -9,6 +9,7 @@ import modelpage from "@/components/main/modelpage.vue";
 import Page1 from "@/components/main/Page1.vue";
 import Authentication from "@/pages/authentication.vue";
 import Personcenter from "@/pages/personcenter.vue";
+import home from "@/components/main/home.vue";
 
 const routers = [
     {
@@ -16,24 +17,24 @@ const routers = [
         name: 'Index',
         component: Index
     },
-    {
-        path: '/app',
-        name: 'AppLayout',
-        component: AppLayout,
-        redirect: '/1',
-        children: [
-            {
-                path: '/1',
-                name: '1',
-                component: modelpage
-            },
-            {
-                path: '/2-1',
-                name: '2-1',
-                component: Page1
-            },
-        ]
-    },
+    // {
+    //     path: '/app',
+    //     name: 'AppLayout',
+    //     component: AppLayout,
+    //     redirect: '/1',
+    //     children: [
+    //         {
+    //             path: '/1',
+    //             name: '1',
+    //             component: modelpage
+    //         },
+    //         {
+    //             path: '/2-1',
+    //             name: '2-1',
+    //             component: Page1
+    //         },
+    //     ]
+    // },
     {
         path: '/Verificationcenter',
         name: 'Verificationcenter',
@@ -42,7 +43,15 @@ const routers = [
     {
         path: '/personcenter',
         name: 'Personcenter',
-        component: Personcenter
+        component: Personcenter,
+        redirect: '/home',
+        children: [
+            {
+                path: '/home',
+                name: 'home',
+                component: home
+            }
+        ]
     },
     {
         path: '/login',
