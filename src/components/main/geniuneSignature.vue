@@ -28,7 +28,7 @@
         <el-table :data="images" style="width: 100%" stripe>
             <el-table-column label="缩略图" width="180">
                 <template #default="scope">
-                    <el-avatar :src="scope.row.url" shape="square" :size="50"></el-avatar>
+                    <el-avatar :src="scope.row.image" shape="square" :size="50"></el-avatar>
                 </template>
             </el-table-column>
             <el-table-column label="上传时间" width="200" sortable prop="uploadTime">
@@ -38,7 +38,7 @@
             </el-table-column>
             <el-table-column label="URL" width="400">
                 <template #default="scope">
-                    <el-link :href="scope.row.url">{{ scope.row.url }}</el-link>
+                    <el-link :href="scope.row.image">{{ scope.row.image }}</el-link>
                 </template>
             </el-table-column>
             <el-table-column label="操作">
@@ -58,19 +58,21 @@
 
 <script>
 import {UploadFilled} from "@element-plus/icons-vue";
+import api from "@/api/index";
 
 export default {
+
     name: "geniuneSignature",
     components: {UploadFilled},
     data() {
         return {
             images: [
                 {
-                    url: 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F.png',
+                    image: 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F.png',
                     uploadTime: '2023-04-06 20:00:00'
                 },
                 {
-                    url: 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F.png',
+                    image: 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F.png',
                     uploadTime: '2023-04-07 21:00:00'
                 }
             ]
@@ -78,11 +80,72 @@ export default {
     },
     methods: {
         uploadSuccess(response) {
-            console.log('upload success: ', response)
+            console.log('upload success: ', response[0])
+            // 将上传成功的图片写入到数据库中
+            api.uploadGeniuneSignature(this.$store.state.userInfo.id, response[0]).then(res => {
+                if (res.data.code == 200) {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'success'
+                    })
+                } else {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    })
+                }
+            }).catch(err => {
+                this.$message({
+                    message: err,
+                    type: 'error'
+                })
+            })
+
         },
         handleDelete(index, row) {
-            console.log('delete: ', index, row.uploadTime)
+            console.log('delete: ', index, row.uploadTime, ' ', row.id)
+            api.deleteGeniuneSignature(row.id).then(res => {
+                if (res.data.code == 200) {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'success'
+                    })
+                    this.images.splice(index, 1)
+                } else {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    })
+                }
+            }).catch(err => {
+                this.$message({
+                    message: err,
+                    type: 'error'
+                })
+            })
         }
+    },
+    created() {
+        // 存储store中的数据
+        // 页面刷新监视器
+        window.addEventListener('beforeunload', () => {
+            console.log('页面刷新')
+            sessionStorage.setItem('store', JSON.stringify(this.$store.state))
+        })
+        if (sessionStorage.getItem('store')) {
+            this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem('store'))))
+        }
+
+        //获取image列表
+        api.getGeniuneSignatureList(this.$store.state.userInfo.id).then(res => {
+            console.log(res.data)
+            this.images = res.data.imageList
+        }).catch(err => {
+            this.$message({
+                message: err,
+                type: 'error'
+            })
+        })
     }
 }
 </script>

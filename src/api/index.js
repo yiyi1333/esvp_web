@@ -39,6 +39,25 @@ const api = {
             birthday: account.birthday,
             sex: account.sex
         })
+    },
+    // 请求签名图像列表
+    getGeniuneSignatureList(id) {
+        return axios.post('/api/esvp/image/getGeniuneSignatureList', {
+            userId: id
+        })
+    },
+    // 删除某张图片
+    deleteGeniuneSignature(id) {
+        return axios.post('/api/esvp/image/deleteGeniuneSignature', {
+            id: id
+        })
+    },
+    // 上传图片
+    uploadGeniuneSignature(id, url) {
+        return axios.post('/api/esvp/image/uploadGeniuneSignature', {
+            userId: id,
+            url: url
+        })
     }
 
     // 测试接口
