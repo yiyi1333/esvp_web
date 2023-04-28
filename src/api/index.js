@@ -46,15 +46,31 @@ const api = {
             userId: id
         })
     },
+    getForgedSignatureList(id) {
+        return axios.post('/api/esvp/image/getForgedSignatureList', {
+            userId: id
+        })
+    },
     // 删除某张图片
     deleteGeniuneSignature(id) {
         return axios.post('/api/esvp/image/deleteGeniuneSignature', {
             id: id
         })
     },
+    deleteForgedSignature(id) {
+        return axios.post('/api/esvp/image/deleteForgedSignature', {
+            id: id
+        })
+    },
     // 上传图片
     uploadGeniuneSignature(id, url) {
         return axios.post('/api/esvp/image/uploadGeniuneSignature', {
+            userId: id,
+            url: url
+        })
+    },
+    uploadForgedSignature(id, url) {
+        return axios.post('/api/esvp/image/uploadForgedSignature', {
             userId: id,
             url: url
         })

@@ -67,14 +67,14 @@ export default {
     data() {
         return {
             images: [
-                {
-                    image: 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F.png',
-                    uploadTime: '2023-04-06 20:00:00'
-                },
-                {
-                    image: 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F.png',
-                    uploadTime: '2023-04-07 21:00:00'
-                }
+                // {
+                //     image: 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F.png',
+                //     uploadTime: '2023-04-06 20:00:00'
+                // },
+                // {
+                //     image: 'https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F.png',
+                //     uploadTime: '2023-04-07 21:00:00'
+                // }
             ]
         }
     },
@@ -87,6 +87,16 @@ export default {
                     this.$message({
                         message: res.data.msg,
                         type: 'success'
+                    })
+                    // 更新图片列表
+                    api.getGeniuneSignatureList(this.$store.state.userInfo.id).then(res => {
+                        console.log(res.data)
+                        this.images = res.data.imageList
+                    }).catch(err => {
+                        this.$message({
+                            message: err,
+                            type: 'error'
+                        })
                     })
                 } else {
                     this.$message({
