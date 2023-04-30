@@ -106,7 +106,7 @@ export default {
                     id: 3,
                     index: '3',
                     title: '授权码管理',
-                    path: '/authorizationCode'
+                    path: '/authorizationCodeManagement'
                 },
                 {
                     id: 4,

@@ -12,6 +12,7 @@ import Personcenter from "@/pages/personcenter.vue";
 import home from "@/components/main/home.vue";
 import forgedSignature from "@/components/main/forgedSignature.vue";
 import geniuneSignature from "@/components/main/geniuneSignature.vue";
+import authorizationCodeManagement from "@/components/main/authorizationCodeManagement.vue";
 
 const routers = [
     {
@@ -72,6 +73,11 @@ const routers = [
                 path: '/geniuneSignature',
                 name: 'geniuneSignature',
                 component: geniuneSignature
+            },
+            {
+                path: '/authorizationCodeManagement',
+                name: 'authorizationCodeManagement',
+                component: authorizationCodeManagement
             }
         ]
     },
