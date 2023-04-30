@@ -74,6 +74,27 @@ const api = {
             userId: id,
             url: url
         })
+    },
+
+    // 生成授权码
+    addAuthorizationCode(userid, name, day) {
+        return axios.post('/api/esvp/authorizationCode/addAuthorizationCode', {
+            userid: userid,
+            name: name,
+            day: day
+        })
+    },
+    // 获取授权码列表
+    getAuthorizationCodeList(userid) {
+        return axios.post('/api/esvp/authorizationCode/getAuthorizationCodeList', {
+            userid: userid
+        })
+    },
+    // 删除授权码
+    deleteAuthorizationCode(id) {
+        return axios.post('/api/esvp/authorizationCode/deleteAuthorizationCode', {
+            id: id
+        })
     }
 
     // 测试接口
