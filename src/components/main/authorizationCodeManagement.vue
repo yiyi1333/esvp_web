@@ -10,9 +10,9 @@
 
         <div>
             <el-table :data="authorizations" style="width: 100%">
-                <el-table-column prop="name" label="标签" width="180">
+                <el-table-column prop="name" label="标签">
                 </el-table-column>
-                <el-table-column prop="code" label="授权码" width="180">
+                <el-table-column prop="code" label="授权码">
                     <template #default="scope">
                         <el-tag>{{ scope.row.code }}</el-tag>
                     </template>

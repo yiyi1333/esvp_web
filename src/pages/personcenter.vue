@@ -12,6 +12,7 @@
                 >
                     <el-menu-item :span="4" index="0">E S V P</el-menu-item>
                     <div class="flex-grow"/>
+                    <el-menu-item @click="logout">Log out</el-menu-item>
                     <!--                <el-sub-menu index="2">-->
                     <!--                    <template #title>Workspace</template>-->
                     <!--                    <el-menu-item index="2-1">item one</el-menu-item>-->
@@ -115,6 +116,12 @@ export default {
                     path: '/manualVerification'
                 }
             ]
+        }
+    },
+    methods: {
+        logout() {
+            this.$store.commit('removeUserInfo')
+            this.$router.push('/')
         }
     },
     created() {

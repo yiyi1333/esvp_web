@@ -17,6 +17,9 @@ export default createStore({
         //设置用户信息
         setUserInfo(state, userInfo) {
             state.userInfo = userInfo;
+        },
+        removeUserInfo(state) {
+            state.userInfo = {};
         }
     }
 })
