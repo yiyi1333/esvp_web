@@ -95,6 +95,13 @@ const api = {
         return axios.post('/api/esvp/authorizationCode/deleteAuthorizationCode', {
             id: id
         })
+    },
+    // 图像验证
+    verification(url, code) {
+        return axios.post('/api/esvp/verification/verification', {
+            authorizationCode: code,
+            imageUrl: url
+        })
     }
 
     // 测试接口
