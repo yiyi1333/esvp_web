@@ -44,7 +44,7 @@
                 </div>
                 <el-text>签名目标识别置信度</el-text>
                 <br>
-                <el-text>{{ result.recognitionRate }} %</el-text>
+                <p class="text-center">{{ result.recognitionRate }} %</p>
             </el-card>
             <el-card class="m-6 p-12 box-card flex">
                 <div>
@@ -53,14 +53,20 @@
                 </div>
                 <el-text>本人签名检测置信度</el-text>
                 <br>
-                <el-text>{{ result.realRate }} %</el-text>
+                <p class="text-center">{{ result.realRate }} %</p>
             </el-card>
             <el-card class="m-6 p-12 box-card flex flex-grow">
-                <div>
-                    <el-image style="width: 6rem"
-                              src="https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/report.svg"/>
-                </div>
-                <el-text>签名检测报告</el-text>
+                <!--                <div>-->
+                <!--                    <el-image style="width: 6rem"-->
+                <!--                              src="https://yiyi-picture.oss-cn-hangzhou.aliyuncs.com/Typora/report.svg"/>-->
+                <!--                </div>-->
+                <p class="text-2xl">检测报告</p>
+                <br>
+                <p class="italic text-base font-light text-gray-500">{{ result.resultContext }}</p>
+                <el-button round type="primary" @click="applyManualVerification"
+                           class="bg-cyan-600 w-[160px] mt-14 border-2 border-cyan-700 shadow-gray-500 shadow-lg">
+                    申请人工复核
+                </el-button>
             </el-card>
         </div>
 
