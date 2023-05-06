@@ -13,6 +13,7 @@ import home from "@/components/main/home.vue";
 import forgedSignature from "@/components/main/forgedSignature.vue";
 import geniuneSignature from "@/components/main/geniuneSignature.vue";
 import authorizationCodeManagement from "@/components/main/authorizationCodeManagement.vue";
+import manualVerification from "@/components/main/manualVerification.vue";
 
 const routers = [
     {
@@ -78,6 +79,11 @@ const routers = [
                 path: '/authorizationCodeManagement',
                 name: 'authorizationCodeManagement',
                 component: authorizationCodeManagement
+            },
+            {
+                path: '/manualVerification',
+                name: 'manualVerification',
+                component: manualVerification
             }
         ]
     },

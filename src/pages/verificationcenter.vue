@@ -89,7 +89,7 @@ export default {
                 context: '验证'
             },
             result: '',
-            resultShow: true
+            resultShow: false
         }
     },
     methods: {
