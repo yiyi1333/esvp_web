@@ -117,6 +117,13 @@ const api = {
         return axios.post('/api/esvp/manualVerification/getList', {
             id: id
         })
+    },
+    // 更新状态
+    updateStatus(id, status) {
+        return axios.post('/api/esvp/manualVerification/updateStatus', {
+            id: id,
+            status: status
+        })
     }
 
     // 测试接口

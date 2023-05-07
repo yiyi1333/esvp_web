@@ -227,18 +227,63 @@ export default {
     methods: {
         handleAcceptGeniune(index, row) {
             console.log(index, row)
-            this.acceptGeniuneList.push(row)
-            this.waitingReviewList.splice(index, 1)
+            api.updateStatus(row.userId, "正样本").then(res => {
+                console.log(res)
+                if (res.data.code == 200) {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'success'
+                    })
+                    row.status = "正样本"
+                    this.acceptGeniuneList.push(row)
+                    this.waitingReviewList.splice(index, 1)
+                } else {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    })
+                }
+            })
         },
         handleAcceptForgery(index, row) {
             console.log(index, row)
-            this.acceptForgeryList.push(row)
-            this.waitingReviewList.splice(index, 1)
+            api.updateStatus(row.userId, "负样本").then(res => {
+                console.log(res)
+                if (res.data.code == 200) {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'success'
+                    })
+                    row.status = "负样本"
+                    this.acceptForgeryList.push(row)
+                    this.waitingReviewList.splice(index, 1)
+                } else {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    })
+                }
+            })
         },
         handleReject(index, row) {
             console.log(index, row)
-            this.rejectList.push(row)
-            this.waitingReviewList.splice(index, 1)
+            api.updateStatus(row.userId, "已拒绝").then(res => {
+                console.log(res)
+                if (res.data.code == 200) {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'success'
+                    })
+                    row.status = "已拒绝"
+                    this.rejectList.push(row)
+                    this.waitingReviewList.splice(index, 1)
+                } else {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    })
+                }
+            })
         },
         handleReview() {
             console.log(index, row)
