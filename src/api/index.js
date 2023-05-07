@@ -102,6 +102,15 @@ const api = {
             authorizationCode: code,
             imageUrl: url
         })
+    },
+    // 人工审核提交
+    manualVerificationAdd(id, url, code, resultContext) {
+        return axios.post('/api/esvp/manualVerification/add', {
+            userid: id,
+            imageUrl: url,
+            authorizationCode: code,
+            resultContext: resultContext
+        })
     }
 
     // 测试接口

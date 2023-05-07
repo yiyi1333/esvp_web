@@ -133,6 +133,23 @@ export default {
                 this.button.loading = false
                 this.button.context = '验证'
             })
+        },
+        applyManualVerification() {
+            console.log('申请人工复核')
+            console.log('请求数据', this.$store.state.userInfo.id, this.image, this.code, this.result.resultContext)
+            api.manualVerificationAdd(this.$store.state.userInfo.id, this.image, this.code, this.result.resultContext).then(res => {
+                if (res.data.code == 200) {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'success'
+                    })
+                } else {
+                    this.$message({
+                        message: res.data.msg,
+                        type: 'error'
+                    })
+                }
+            })
         }
     },
     created() {
