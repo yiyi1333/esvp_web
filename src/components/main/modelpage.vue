@@ -38,11 +38,6 @@
                     <div class="el-upload__text">
                         Drop file here or <em>click to upload</em>
                     </div>
-                    <!--                    <template #tip>-->
-                    <!--                        <div class="el-upload__tip">-->
-                    <!--                            jpg/png files with a size less than 500kb-->
-                    <!--                        </div>-->
-                    <!--                    </template>-->
                 </el-upload>
 
                 <p class="text-lg font-medium" style="margin: 3px">Example Output</p>

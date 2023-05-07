@@ -111,6 +111,12 @@ const api = {
             authorizationCode: code,
             resultContext: resultContext
         })
+    },
+    // 人工审核列表
+    manualVerificationList(id) {
+        return axios.post('/api/esvp/manualVerification/getList', {
+            id: id
+        })
     }
 
     // 测试接口
