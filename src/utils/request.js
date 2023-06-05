@@ -3,7 +3,7 @@ import querystring from "querystring";
 
 const instance = axios.create({
     // 公共配置
-    timeout: 5000,
+    timeout: 50000,
 })
 // 请求拦截器
 instance.interceptors.request.use(config => {
